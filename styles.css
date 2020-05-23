@@ -1,71 +1,204 @@
 body{
   margin: 0;
   padding: 0;
-  font-family: Arial;
+  font-family: 'Lato', sans-serif;
   background-color: #fafafa;
 }
 
 .header{
+  /* padding: 0 20px; */
   background-color: #fff;
   border-bottom: 1px solid #dbdbdb;
-  max-height: 54px;
-  grid-template: 54px / repeat(3,1fr);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: minmax(460px,975px);
   justify-content: center;
-  /* display: flex;
+}
+.header-container{
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 215px 1fr;
+  grid-template-rows: 54px;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 .logo-image{
   margin: 0;
-  grid-column: span 1;
-  grid-row: 1/2;
+  grid-column: 1 / span 1;
 }
 .logo-image img{
-  margin: 10px 0;
+  margin-top: 7px;
 }
 .search{
-  border-radius: 2px;
+  border-radius: 5px;
   border: 1px solid #dbdbdb;
   max-width: 215px;
   height: 28px;
   text-align: center;
-  grid-column: span 1;
-  grid-row: 1/2;
+  grid-column: 2 / span 1;
 }
 .search-icon{
-  grid-column: span 1;
-  grid-row: 1/2;
+  width: 15px;
+  height: 15px;
+  background-image: url('images/search.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .search input{
   height: 100%;
-  width: 100%;
+  width: 80%;
+  padding: 0;
   background-color: #fafafa;
   border: none;
   outline: none;
+  text-align: center;
+}
+.search input::placeholder{
+  font-weight: 300;
+  font-size: 13px;
+}
+.menu-options{
+  justify-self: end;
+  grid-column: 3 / span 1;
+}
+.menu-options a{
+  text-decoration: none;
   font-size: 14px;
+  font-weight: 600;
+  padding: 6px 9px;
+  padding-top: 8px;
+  width: 102px;
+}
+.menu-options_login{
+  color: white;
+  background-color: #0095f6;
+  border-radius: 5px;
+}
+.menu-options_signin{
+  color: #0095f6;
+}
+.hero{
+  margin-top: 55px;
+  display: grid;
+  grid-template-columns: minmax(460px,975px);
+  justify-content: center;
+}
+.hero-container{
+  padding: 0 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template: 40px 30px 150px 150px / 300px 1fr;
+  grid-template-areas: "profile nickname"
+                       "profile numbers"
+                       "profile description"
+                       "slider slider";
+  grid-gap: 16px;
+}
+.profile-image{
+  grid-area: profile;
+  justify-self: center;
+}
+.profile-image img{
+  border-radius: 50%;
+  border: 1px solid #fafafa;
+  width: 150px;
+  height: 150px;
+}
+.numbers{
+  grid-area: numbers;
+}
+.numbers a{
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  color: black;
+}
+.numbers span{
+  margin-right: 30px;
+}
+.description{
+  grid-area: description;
+  margin: 0;
+}
+.description h4,p{
+  margin: 0;
+}
+.nickname-container{
+  margin: 0;
+  grid-area: nickname;
+}
+.nickname{
+  display: inline;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 300;
+}
+.follow{
+  display: inline;
+  text-decoration: none;
+  outline: none;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 9px;
+  padding-top: 8px;
+  color: white;
+  background-color: #0095f6;
+  border-radius: 5px;
+}
+.slider-container{
+  grid-area: slider;
+  overflow: scroll;
+}
+.slider-stories{
+  box-sizing: content-box;
+  width: 100%;
+  white-space: nowrap;
+}
+.slider-container::-webkit-scrollbar{
+  display: none;
+}
+.story{
+  width: 130px;
+  display: inline-grid;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+}
+.story img{
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  border: 3px solid white;
 }
 .post-list{
   display:grid;
   grid-template-columns: repeat(3, minmax(100px,293px) );
+  /* grid-auto-rows: minmax(100px,293px); */
   justify-content: center;
   grid-gap: 28px;
 }
-
 .post{
   cursor: pointer;
   display: block;
   position: relative;
+  overflow: hidden;
 }
 .post-image{
   margin: 0;
-  height: 293px;
-  overflow: hidden;
+  max-height: 293px;
+  object-fit: cover;
 }
 .post-image img{
   width: 100%;
-  height: 100%;
   object-fit: cover;
-  vertical-align: center;
+  vertical-align: top;
 }
 .post-overlay{
   background-color: rgba(0, 0, 0, 0.4);
@@ -91,8 +224,60 @@ body{
   text-align: center;
   display: inline-block;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 735px) {
   .post-list{
     grid-gap: 3px;
+  }
+  .hero-container{
+    grid-template: 100px 120px 80px 60px/ 100px 1fr;
+    grid-template-areas: "profile nickname"
+                         "description description"
+                         "slider slider"
+                         "numbers numbers";
+  }
+  .profile-image{
+    margin: 0;
+  }
+  .profile-image img{
+    border-radius: 50%;
+    border: 1px solid #fafafa;
+    width: 77px;
+    height: 77px;
+  }
+  .nickname{
+    display: block;
+    margin-bottom: 10px;
+  }
+  .follow{
+    margin-left: 0;
+  }
+  .description{
+    font-size: 14px;
+  }
+  .story{
+    width: 70px;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
+  .story img{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  .numbers{
+    font-size: 14px;
+    border-bottom: 1px solid #dbdbdb;
+    border-top: 1px solid #dbdbdb;
+    color: #8e8e8e;
+    text-align: center;
+  }
+  .numbers a,.numbers span{
+    margin: 0;
+    display: inline-grid;
+  }
+  .numbers a{
+    margin: 10px 30px;
   }
 }
