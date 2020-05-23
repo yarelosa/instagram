@@ -224,6 +224,30 @@ body{
   text-align: center;
   display: inline-block;
 }
+.footer{
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: minmax(460px,975px);
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-content: center;
+  font-size: 12px;
+}
+.footer-options a{
+  text-decoration: none;
+  color: #0095f6;
+  padding: 6px;
+}
+.footer-options{
+  padding-bottom: 10px;
+}
+.footer-options a:first-child{
+  padding-left: 20px;
+}
+.footer-copyright{
+  padding-left: 20px;
+  color: rgba(0,0,0,0.5);
+}
 @media screen and (max-width: 735px) {
   .post-list{
     grid-gap: 3px;
@@ -279,5 +303,8 @@ body{
   }
   .numbers a{
     margin: 10px 30px;
+  }
+  .footer-options{
+    text-align: center;
   }
 }
