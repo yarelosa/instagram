@@ -180,6 +180,7 @@ body{
 .post-list{
   display:grid;
   grid-template-columns: repeat(3, minmax(100px,293px) );
+  grid-template-rows: repeat(3, minmax(100px, 293px));
   /* grid-auto-rows: minmax(100px,293px); */
   justify-content: center;
   grid-gap: 28px;
@@ -196,7 +197,8 @@ body{
   object-fit: cover;
 }
 .post-image img{
-  width: 100%;
+  width: 293px;
+  height: 293px;
   object-fit: cover;
   vertical-align: top;
 }
